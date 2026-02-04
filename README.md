@@ -20,19 +20,19 @@ During the deployment, I also successfully diagnosed and resolved a critical inf
 ### 1. Network Reconnaissance (Ping Sweep)
 **Scenario:** The attacker attempts to discover live hosts on the subnet.
 **Defense:** configured `iptables` to log ICMP packets, which were forwarded to Splunk.
-![Ping Sweep Detection](images/icmp.png)
+![Ping Sweep Detection](icmp.png)
 *Evidence shows repeated ICMP requests from the Kali IP.*
 
 ### 2. Port Scanning (Nmap)
 **Scenario:** A comprehensive scan of the top 100 ports to identify vulnerabilities.
 **Defense:** Detection of rapid TCP SYN packets targeting multiple destination ports.
-![Port Scan Detection](images/Port_Scanin.png)
+![Port Scan Detection](Port_Scanin.png)
 *Evidence shows a massive volume of connection attempts on ports 22, 80, 3306, etc.*
 
 ### 3. Identity Attack (SSH Brute Force)
 **Scenario:** Repeated attempts to guess the SSH password for user `fakeuser`.
 **Defense:** Monitoring `/var/log/auth.log` for failed authentication events.
-![SSH Brute Force Detection](images/Failed_pass.png)
+![SSH Brute Force Detection](Failed_pass.png)
 *Splunk successfully indexed "Failed password" events, attributing the attack to the Kali IP.*
 
 ---
